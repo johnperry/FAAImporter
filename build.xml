@@ -59,7 +59,7 @@
 
 	<target name="javadocs">
 		<mkdir dir="${documentation}"/>
-		<javadoc destdir="${documentation}" sourcepath="${java}" classpathref="classpath"
+		<javadoc destdir="${documentation}" sourcepath="${java}"
 				 doctitle="${title}" windowtitle="${title}" bottom="${copyright}">
 			<package name="org.*"/>
 		</javadoc>
