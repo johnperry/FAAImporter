@@ -301,6 +301,7 @@ public class FAAImporter extends JFrame {
 		public String toString() {
 			StringBuffer sb = new StringBuffer();
 			sb.append(id + "|");
+			sb.append( type.startsWith("AIR") ? "AP|" : (type.startsWith("SEA") ? "SP|" : "|") );
 			sb.append(name + "|");
 			sb.append(city + "|");
 			sb.append(state + "|");
@@ -389,6 +390,7 @@ public class FAAImporter extends JFrame {
 		String state;
 		String lat = "lat";
 		String lon = "lon";
+		String elev = "elev";
 		String var = "var";
 
 		public NAV(String line) {
@@ -401,6 +403,11 @@ public class FAAImporter extends JFrame {
 			name = capitalize(line.substring(42,72), state);
 			lat = getLat(line.substring(371, 384));
 			lon = getLon(line.substring(396, 410));
+			elev = line.substring(472,479).trim();
+			if (!elev.equals("")) {
+				try { elev = Integer.toString(Math.round(Float.parseFloat(elev))); }
+				catch (Exception ignore) { }
+			}
 			var = line.substring(481,484).trim();
 			if (var.startsWith("0")) var = var.substring(1);
 			if (var.endsWith("W")) {
@@ -419,12 +426,14 @@ public class FAAImporter extends JFrame {
 			StringBuffer sb = new StringBuffer();
 			sb.append(id + "|");
 			sb.append(type + "|");
-			sb.append(freq + "|");
 			sb.append(name + "|");
 			sb.append(city + "|");
 			sb.append(state + "|");
 			sb.append(lat + "," + lon + "|");
-			sb.append(var);
+			sb.append(elev + "|");
+			sb.append("|"); //runway
+			sb.append(var + "|");
+			sb.append(freq);
 			sb.append("\n");
 			return sb.toString();
 		}
