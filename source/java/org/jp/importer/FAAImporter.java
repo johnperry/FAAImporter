@@ -49,7 +49,7 @@ public class FAAImporter extends JFrame {
 	}
 
 	/**
-	 * Constructor
+	 * FAAImporter Constructor
 	 */
 	public FAAImporter() {
 		super();
