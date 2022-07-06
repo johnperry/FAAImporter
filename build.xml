@@ -1,4 +1,4 @@
-<project name="FAAImporter" default="all" basedir=".">
+<project name="FARImporter" default="all" basedir=".">
 
 	<property name="build" value="${basedir}/build"/>
 	<property name="libraries" value="${basedir}/libraries"/>
@@ -6,9 +6,8 @@
 	<property name="java" value="${source}/java"/>
 	<property name="products" value="${basedir}/products"/>
 	<property name="documentation" value="${basedir}/documentation"/>
-	<property name="title" value="FAAImporter"/>
-	<property name="copyright" value="Copyright 2019 John Perry"/>
-	<property name="ctp" value="D:/Development/CTP"/>
+	<property name="title" value="FARImporter"/>
+	<property name="copyright" value="Copyright 2020 John Perry"/>
 	<property name="importer" value="org/jp/importer"/>
 
 	<target name="clean">
@@ -37,26 +36,15 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<jar jarfile="${products}/FAAImporter.jar">
+		<jar jarfile="${products}/FARImporter.jar">
 			<manifest>
-				<attribute name="Main-Class" value="org.jp.importer.FAAImporter"/>
+				<attribute name="Main-Class" value="org.jp.importer.FARImporter"/>
 				<attribute name="Implementation-Version" value="${today} @ ${now}"/>
 			</manifest>
 			<fileset dir="${build}" includes="${importer}/*.*" />
 		</jar>
 	</target>
 	
-	<target name="deploy">
-		<copy overwrite="true" todir="${libraries}">
-			<fileset dir="${ctp}/libraries">
-				<include name="log4j.jar"/>
-				<include name="util.jar"/>
-				<include name="jdbm.jar"/>
-			</fileset>
-		</copy>
-	</target>
-
-
 	<target name="javadocs">
 		<mkdir dir="${documentation}"/>
 		<javadoc destdir="${documentation}" sourcepath="${java}"
@@ -65,7 +53,7 @@
 		</javadoc>
 	</target>
 	
-	<target name="all" depends="clean, jar, javadocs">
+	<target name="all" depends="clean, jar">
 		<tstamp>
 			<format property="end" pattern="HH:mm:ss"/>
 		</tstamp>
