@@ -24,18 +24,22 @@ public class FAAImporter extends JFrame {
     
     File faaZipFile;
     ZipObject zob;
+    //Files in the FAA db
     File aptFile = new File("APT.txt");
     File navFile = new File("NAV.txt");
     File twrFile = new File("TWR.txt");
     File awosFile = new File("AWOS.txt");
     File fixFile = new File("FIX.txt");
+    
+    //Files in the app
     File airFile = new File("APPFiles/Airports.txt");
     File seaFile = new File("APPFiles/Seaports.txt");
     File ndbFile = new File("APPFiles/NDBs.txt");
     File vorFile = new File("APPFiles/VORs.txt");
     File fxxFile = new File("APPFiles/Fixes.txt");
-    File xmlFile = new File("APPFiles/Airports.xml");
     File verFile = new File("APPFiles/Version.txt");
+
+    //File xmlFile = new File("APPFiles/Airports.xml");
     
     File assets = new File("/Development/Android/Airports/app/src/main/assets");
     
@@ -171,11 +175,13 @@ public class FAAImporter extends JFrame {
 			cpProgress.println("Writing the Seaports.txt file");
 			text = getAptText(airports, "SEA");
 			FileUtil.setText(seaFile, text);
+			/*
 			cpProgress.println("Writing the Airports.xml file");
 			Document doc = getXML(airports);
 			text = XmlUtil.toPrettyString(doc);
 			text = text.replace("    ", " ");
 			FileUtil.setText(xmlFile, text);
+			*/
 
 			//Get the Navaids
 			count = 0;
@@ -261,7 +267,7 @@ public class FAAImporter extends JFrame {
 			"Upload app files?", "Upload app files", JOptionPane.YES_NO_OPTION);
 		if (option == JOptionPane.YES_OPTION) {
 			FileUtil.copy(verFile, new File(assets, verFile.getName()));
-			FileUtil.copy(aptFile, new File(assets, aptFile.getName()));
+			FileUtil.copy(airFile, new File(assets, airFile.getName()));
 			FileUtil.copy(seaFile, new File(assets, seaFile.getName()));
 			FileUtil.copy(vorFile, new File(assets, vorFile.getName()));
 			FileUtil.copy(ndbFile, new File(assets, ndbFile.getName()));
