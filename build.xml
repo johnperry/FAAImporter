@@ -1,4 +1,4 @@
-<project name="FARImporter" default="all" basedir=".">
+<project name="FAAImporter" default="all" basedir=".">
 
 	<property name="build" value="${basedir}/build"/>
 	<property name="libraries" value="${basedir}/libraries"/>
@@ -6,13 +6,8 @@
 	<property name="java" value="${source}/java"/>
 	<property name="products" value="${basedir}/products"/>
 	<property name="documentation" value="${basedir}/documentation"/>
-<<<<<<< HEAD
 	<property name="title" value="FAAImporter"/>
-	<property name="copyright" value="Copyright 2019 John Perry"/>
-=======
-	<property name="title" value="FARImporter"/>
 	<property name="copyright" value="Copyright 2020 John Perry"/>
->>>>>>> 532cf8df581f104df9e4a5778e7994857ddca355
 	<property name="importer" value="org/jp/importer"/>
 
 	<target name="clean">
@@ -41,9 +36,9 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<jar jarfile="${products}/FARImporter.jar">
+		<jar jarfile="${products}/FAAImporter.jar">
 			<manifest>
-				<attribute name="Main-Class" value="org.jp.importer.FARImporter"/>
+				<attribute name="Main-Class" value="org.jp.importer.FAAImporter"/>
 				<attribute name="Implementation-Version" value="${today} @ ${now}"/>
 			</manifest>
 			<fileset dir="${build}" includes="${importer}/*.*" />

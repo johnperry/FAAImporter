@@ -536,7 +536,7 @@ public class FAAImporter extends JFrame {
 		double sec = Double.parseDouble(s.substring(6,NS));
 		double lat = deg + min/60 + sec/3600;
 		if (s.charAt(NS) == 'S') lat = -lat;
-		return String.format("%.4f",lat);
+		return String.format("%.6f",lat);
 	}
 
 	//088-33-43.0095W
@@ -548,7 +548,7 @@ public class FAAImporter extends JFrame {
 		double sec = Double.parseDouble(s.substring(7,EW));
 		double lon = deg + min/60 + sec/3600;
 		if (s.charAt(EW) == 'W') lon = -lon;
-		return String.format("%.4f",lon);
+		return String.format("%.6f",lon);
 	}
 		
 	private String capitalize(String s, String state) {
